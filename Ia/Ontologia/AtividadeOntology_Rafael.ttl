@@ -1,0 +1,291 @@
+@prefix : <http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2/> .
+
+<http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#temIntensidadeAr
+:temIntensidadeAr rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Recinto ;
+                  rdfs:range :Intensidade .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#temIntensidadeLuz
+:temIntensidadeLuz rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Recinto ;
+                   rdfs:range :Intensidade .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#temPessoa
+:temPessoa rdf:type owl:ObjectProperty ;
+           rdfs:domain :Recinto ;
+           rdfs:range :Pessoa .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#temPreferenciaLuz
+:temPreferenciaLuz rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Pessoa ;
+                   rdfs:range :Intensidade .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Adulto
+:Adulto rdf:type owl:Class ;
+        rdfs:subClassOf :Pessoa .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Crianca
+:Crianca rdf:type owl:Class ;
+         rdfs:subClassOf :Pessoa .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Idoso
+:Idoso rdf:type owl:Class ;
+       rdfs:subClassOf :Pessoa .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Intensidade
+:Intensidade rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Pessoa
+:Pessoa rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#QuartoDeReflexao
+:QuartoDeReflexao rdf:type owl:Class ;
+                  rdfs:subClassOf :Recinto .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Recinto
+:Recinto rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Alta
+:Alta rdf:type owl:NamedIndividual ,
+               :Intensidade .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Baixa
+:Baixa rdf:type owl:NamedIndividual ,
+                :Intensidade .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Joao
+:Joao rdf:type owl:NamedIndividual ,
+               :Adulto ;
+      :temPreferenciaLuz :Baixa .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Jose
+:Jose rdf:type owl:NamedIndividual ,
+               :Idoso ;
+      :temPreferenciaLuz :Alta .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Media
+:Media rdf:type owl:NamedIndividual ,
+                :Intensidade .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Pedro
+:Pedro rdf:type owl:NamedIndividual ,
+                :Crianca ;
+       :temPreferenciaLuz :Media .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Teste1
+:Teste1 rdf:type owl:NamedIndividual ,
+                 :QuartoDeReflexao ;
+        :temPessoa :Joao .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Teste2
+:Teste2 rdf:type owl:NamedIndividual ,
+                 :QuartoDeReflexao ;
+        :temPessoa :Pedro .
+
+
+###  http://www.semanticweb.org/lenovo/ontologies/2026/4/untitled-ontology-2#Teste3
+:Teste3 rdf:type owl:NamedIndividual ,
+                 :QuartoDeReflexao ;
+        :temPessoa :Jose .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:q rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:p rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:luz rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "RegraAdulto" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :QuartoDeReflexao ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :q
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Adulto ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :p
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :temPessoa ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :q ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :p
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :temIntensidadeAr ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :q ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Baixa
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "RegraCriança" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :QuartoDeReflexao ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :q
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Crianca ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :p
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :temPessoa ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :q ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :p
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :temIntensidadeAr ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :q ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Media
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "RegraIdoso" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :QuartoDeReflexao ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :q
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Idoso ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :p
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :temPessoa ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :q ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :p
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :temIntensidadeAr ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :q ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Alta
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Preferencia" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :QuartoDeReflexao ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :q
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Pessoa ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :p
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :temPessoa ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :q ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> :p
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :temPreferenciaLuz ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> :luz
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :temIntensidadeLuz ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :q ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :luz
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
